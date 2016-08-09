@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>midterm question 11</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.10.2/paper-full.min.js"></script>
+
+<style>
+
+canvas[resize] {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden{
+	display:none;
+}
+</style>
+</head>
+<body>
+
+<canvas id="myCanvas" resize></canvas>
+<img src="ball.png" id="comet" class="hidden">
+
+
+<script type="text/paperscript" canvas="myCanvas">
+
+
+//comet trail
+function onMouseMove(e) {
+  var c = new Shape.Circle(e.point, 25);
+  c.fillColor = 'black';
+  c.onFrame = shrinkCircle;
+}
+ 
+function shrinkCircle() {
+  this.radius -= .5;
+  if (this.radius < 1) {
+    this.remove();
+  }
+}
+
+</script>
+</body>
+</html>
